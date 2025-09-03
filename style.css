@@ -13,3 +13,8 @@
   font-weight: 400;
   font-style: normal;
 }
+
+button :hover {
+    background-color: #422AD5;
+    color: white;
+}

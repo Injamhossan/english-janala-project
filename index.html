@@ -24,29 +24,65 @@
 </head>
 
 <body class="poppins-regular">
-    <div class="navbar bg-base-100 shadow-sm bg-[#badeff42]">
-        <div class="navbar-start">
-
-            <a class="btn btn-ghost text-xl">
-                <div class="flex items-center">
-                    <h1 class="text-[20px] font-semibold">English</h1>
-                    <img src="assets/logo.png" alt="">
-                    <h1 class="text-[20px] hind-siliguri-regular">জানালা</h1>
+    <nav class="mx-auto">
+        <div class="navbar bg-base-100 shadow-sm bg-[#badeff42]">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                    </ul>
                 </div>
-            </a>
-        </div>
+                <a class="btn btn-ghost text-xl">
+                    <div class="flex items-center">
+                        <h1 class="text-[20px] font-semibold">English</h1>
+                        <img src="assets/logo.png" alt="">
+                        <h1 class="text-[20px] hind-siliguri-regular">জানালা</h1>
+                    </div>
+                </a>
+            </div>
 
-        <div class="navbar-end gap-4">
-            <button class="btn btn-neutral btn-outline border-[#422AD5] text-[#422AD5]"><i
-                    class="fa-solid fa-circle-question"></i> FAQ</button>
-            <button class="btn btn-neutral btn-outline border-[#422AD5] text-[#422AD5]"><i
-                    class="fa-solid fa-book-open-reader"></i>Learn</button>
-            <button class="btn btn-neutral btn-outline border-[#422AD5] text-[#422AD5]"><i
-                    class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            <div class="navbar-end gap-4 hidden md:flex">
+                <button class="btn btn-neutral btn-outline border-[#422AD5] text-[#422AD5] hover:text-white hover:bg-[#422AD5]">
+                    <i class="fa-solid fa-circle-question"></i> FAQ
+                </button>
+                <button class="btn btn-neutral btn-outline border-[#422AD5] text-[#422AD5] hover:text-white hover:bg-[#422AD5]">
+                    <i class="fa-solid fa-book-open-reader"></i> Learn
+                </button>
+                <button class="btn btn-neutral btn-outline border-[#422AD5] text-[#422AD5] hover:text-white hover:bg-[#422AD5]">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </div>
         </div>
-    </div>
     </nav>
 
+    <!-- Hero Section -->
+    <section>
+        <div class="mx-auto flex flex-col-reverse md:flex-row gap-10 justify-between items-center  py-5 w-11/12">
+            <div>
+                <h1 class="text-[48px] font-bold"><span class="text-[#00BCFF]">English</span> is Easy!!</h1>
+                <p class="hind-siliguri-regular text-[24px] text-[#18181B] mb-8">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু
+                    করুন। আপনি যদি নতুন হন অথবা <br> আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে
+                    <br> যাবে অন্য একটি Level এ</p>
+                <input type="text" placeholder="Enter Your Name"
+                    class="border-[#18181b33] pt-[9px] pb-[9px] pl-[13px] rounded-[4px] mb-[20px]"> <br>
+                <input type="password" placeholder="..............."
+                    class="border-[#18181b33] pt-[9px] pb-[9px] pl-[13px] rounded-[4px] mb-5"> <br>
+                <button
+                    class="btn btn-neutral btn-outline bg-[#422AD5] text-white hover:text-[#422AD5] hover:bg-transparent hover:border-[#422AD5]">
+                    Get Started</button>
+            </div>
+            <div>
+                <img src="assets/hero-student.png" alt="">
+            </div>
+        </div>
+    </section>
     <script src="script.js"></script>
 </body>
 
