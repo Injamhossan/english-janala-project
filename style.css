@@ -14,7 +14,8 @@
   font-style: normal;
 }
 
-button :hover {
-    background-color: #422AD5;
+.active {
+    background-color: #422ad5;
     color: white;
+    border: #422ad5;
 }
