@@ -85,20 +85,30 @@ const displayWordDetails = (word) => {
     <div class="">
       <h2 class="text-2xl font-bold mb-[32px]">
         ${word.word ? word.word : "শব্দ পাওয়া যায়নি"} 
-        (<i class="fa-solid fa-microphone-lines"></i> : ${word.pronunciation ? word.pronunciation : "N/A"})
+        (<i class="fa-solid fa-microphone-lines"></i> : ${
+          word.pronunciation ? word.pronunciation : "N/A"
+        })
       </h2>
     </div>
     <div class="mb-[32px]">
       <h2 class="font-bold">Meaning</h2>
-      <p class="hind-siliguri-regular">${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"}</p>
+      <p class="hind-siliguri-regular">${
+        word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"
+      }</p>
     </div>
     <div class="mb-[32px]">
       <h2 class="font-bold">Example</h2>
-      <p class="hind-siliguri-regular">${word.sentence ? word.sentence : "উদাহরণ পাওয়া যায়নি"}</p>
+      <p class="hind-siliguri-regular">${
+        word.sentence ? word.sentence : "উদাহরণ পাওয়া যায়নি"
+      }</p>
     </div>
     <div class="">
       <h2 class="font-bold">Synonym</h2>
-      <div class="hind-siliguri-regular">${word.synonyms ? createElements(word.synonyms) : "কোনো synonym পাওয়া যায়নি"}</div>
+      <div class="hind-siliguri-regular">${
+        word.synonyms
+          ? createElements(word.synonyms)
+          : "কোনো synonym পাওয়া যায়নি"
+      }</div>
     </div>
   `;
 
@@ -125,13 +135,19 @@ const displayLevelWord = (words) => {
     const card = document.createElement("div");
     card.innerHTML = `
       <div class="bg-white rounded-xl text-center shadow-sm py-5 px-5 space-y-4">
-        <h2 class="text-[32px] font-bold">${word.word ? word.word : "শব্দ পাওয়া যায়নি"}</h2>
+        <h2 class="text-[32px] font-bold">${
+          word.word ? word.word : "শব্দ পাওয়া যায়নি"
+        }</h2>
         <p class="text-[20px]">Meaning / Pronunciation</p>
         <div class="hind-siliguri-regular text-[#18181B] text-[32px] font-semibold"> 
-          "${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${word.pronunciation ? word.pronunciation : "Pronunciation পাওয়া যায়নি"}"
+          "${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${
+      word.pronunciation ? word.pronunciation : "Pronunciation পাওয়া যায়নি"
+    }"
         </div>
         <div class="flex justify-between items-center">
-          <button onclick="loadWordDetail(${word.id})" class="bg-[#1a91ff1a] px-5 py-4 rounded-lg">
+          <button onclick="loadWordDetail(${
+            word.id
+          })" class="bg-[#1a91ff1a] px-5 py-4 rounded-lg">
             <i class="fa-solid fa-circle-info"></i>
           </button>
           <button class="bg-[#1a91ff1a] px-5 py-4 rounded-lg">
@@ -161,3 +177,22 @@ const displayLesson = (lessons) => {
 };
 
 loadLesson();
+
+
+// FAQ Toggle 
+document.querySelectorAll(".faq-header").forEach((header) => {
+  header.addEventListener("click", () => {
+    const content = header.nextElementSibling;
+    const icon = header.querySelector("i");
+
+    content.classList.toggle("hidden");
+
+    if (content.classList.contains("hidden")) {
+      icon.classList.remove("fa-minus");
+      icon.classList.add("fa-plus");
+    } else {
+      icon.classList.remove("fa-plus");
+      icon.classList.add("fa-minus");
+    }
+  });
+});
