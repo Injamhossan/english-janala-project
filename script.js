@@ -6,10 +6,10 @@ const loadLesson = () => {
       if (json.status && json.data) {
         displayLesson(json.data);
       } else {
-        console.error("API থেকে সঠিক ডেটা পাওয়া যায়নি");
+        console.error("API not available");
       }
     })
-    .catch((err) => console.error("API তে সমস্যা:", err));
+    .catch((err) => console.error("API Problem:", err));
 };
 
 const removeActive = () => {
@@ -33,7 +33,7 @@ const loadLevelWord = (id) => {
       if (data.status && data.data) {
         displayLevelWord(data.data);
       } else {
-        console.error("API থেকে ডেটা পাওয়া যায়নি");
+        console.error("API Not available");
       }
     })
     .catch((err) => console.error("API Error:", err));
@@ -55,7 +55,6 @@ const loadWordDetail = async (id) => {
   }
 };
 
-
 const createElements = (value) => {
   if (!value) return "কোনো synonym পাওয়া যায়নি";
 
@@ -75,6 +74,21 @@ const createElements = (value) => {
     )
     .join("");
 };
+
+// Nav button Function 
+
+
+document.querySelector("#faq-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  document.querySelector("#faq").scrollIntoView({ behavior: "smooth" });
+});
+
+
+document.querySelector("#learn-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  document.querySelector("#learn").scrollIntoView({ behavior: "smooth" });
+});
+
 
 const displayWordDetails = (word) => {
   console.log(word);
@@ -130,34 +144,29 @@ const displayLevelWord = (words) => {
     return;
   }
 
+  // প্রথমে container কে flex + wrap দিতে হবে
+  wordContainer.className = "flex flex-wrap mx-5 sm:mx-20 lg:mx-14 bg-[#F8F8F8] p-2 lg:p-4 rounded-[10px]"; // negative margin for spacing
+
   words.forEach((word) => {
-  const card = document.createElement("div");
-  card.innerHTML = `
-    <div class="bg-white rounded-xl text-center shadow-sm py-5 px-5 space-y-4">
-      <h2 class="text-[32px] font-bold">${
-        word.word ? word.word : "শব্দ পাওয়া যায়নি"
-      }</h2>
-      <p class="text-[20px]">Meaning / Pronunciation</p>
-      <div class="hind-siliguri-regular text-[#18181B] text-[32px] font-semibold"> 
-        "${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${
-    word.pronunciation ? word.pronunciation : "Pronunciation পাওয়া যায়নি"
-  }"
-      </div>
-      <div class="flex justify-between items-center">
-        <button onclick="loadWordDetail(${
-          word.id
-        })" class="bg-[#1a91ff1a] px-5 py-4 rounded-lg">
-          <i class="fa-solid fa-circle-info"></i>
-        </button>
-        <button onclick="speakWord('${
-          word.word
-        }')" class="bg-[#1a91ff1a] px-5 py-4 rounded-lg">
-          <i class="fa-solid fa-volume-high"></i>
-        </button>
-      </div>
-    </div>`;
-  wordContainer.append(card);
-});
+    const card = document.createElement("div");
+
+    card.className = "w-full sm:w-1/2 lg:w-1/3 p-3";
+
+    card.innerHTML = `
+  <div class="bg-white rounded-xl text-center shadow-sm py-5 px-5 space-y-4"> <h2 class="text-[32px] font-bold">${
+    word.word ? word.word : "শব্দ পাওয়া যায়নি"
+  }</h2> <p class="text-[20px]">Meaning / Pronunciation</p> <div class="hind-siliguri-regular text-[#18181B] text-[32px] font-semibold"> "${
+      word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"
+    } / ${
+      word.pronunciation ? word.pronunciation : "Pronunciation পাওয়া যায়নি"
+    }" </div> <div class="flex justify-between items-center"> <button onclick="loadWordDetail(${
+      word.id
+    })" class="bg-[#1a91ff1a] px-5 py-4 rounded-lg"> <i class="fa-solid fa-circle-info"></i> </button> <button onclick="speakWord('${
+      word.word
+    }')" class="bg-[#1a91ff1a] px-5 py-4 rounded-lg"> <i class="fa-solid fa-volume-high"></i> </button> </div> </div>`;
+
+    wordContainer.append(card);
+  });
 };
 
 // Specking Function
@@ -167,7 +176,7 @@ function speakWord(text) {
     return;
   }
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "en-US"; 
+  utterance.lang = "en-US";
   speechSynthesis.speak(utterance);
 }
 
@@ -190,8 +199,7 @@ const displayLesson = (lessons) => {
 
 loadLesson();
 
-
-// FAQ Toggle 
+// FAQ Toggle
 document.querySelectorAll(".faq-header").forEach((header) => {
   header.addEventListener("click", () => {
     const content = header.nextElementSibling;

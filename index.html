@@ -52,11 +52,11 @@
             </div>
 
             <div class="navbar-end gap-4 hidden md:flex">
-                <button
+                <button id="faq-btn"
                     class="btn btn-neutral btn-outline border-[#422AD5] text-[#422AD5] hover:text-white hover:bg-[#422AD5]">
-                    <i class="fa-solid fa-circle-question"></i> FAQ
+                    <i class="fa-solid fa-circle-question"></i>FAQ
                 </button>
-                <button
+                <button id="learn-btn"
                     class="btn btn-neutral btn-outline border-[#422AD5] text-[#422AD5] hover:text-white hover:bg-[#422AD5]">
                     <i class="fa-solid fa-book-open-reader"></i> Learn
                 </button>
@@ -69,7 +69,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="mb-[200px]">
+    <section class="mb-[150px]">
         <div
             class="max-w-[1800px] mx-auto flex flex-col-reverse md:flex-row gap-10 justify-between items-center py-5 w-11/12">
             <div>
@@ -101,26 +101,28 @@
     </section>
 
     <!-- Vocabulary Lession -->
-    <section class="max-w-[1800px] mx-auto px-4 text-center">
+    <section id="learn" class="max-w-[1800px] mx-auto px-4 text-center">
         <h1 class="text-[36px] font-bold mb-6">
             <span class="text-[#00BCFF]">Let's</span> Learn Vocabularies
         </h1>
         <div id="level-container" class="flex flex-wrap gap-5 justify-center mb-10"></div>
     </section>
-    <section id="word-container" class="bg-gray-100 mx-auto w-11/12 p-10 rounded-md grid grid-cols-3 gap-4">
-        <div class="text-center col-span-full py-10 space-y-6">
-            <p class="hind-siliguri-regular text-[16px]">
-                আপনি এখনো কোন Lesson Select করেন
-            </p>
-            <h2 class="hind-siliguri-regular text-[35px]">
-                একটি Lesson Select করুন।
-            </h2>
-        </div>
-    </section>
+    <section id="word-container" class="mx-auto w-11/12 bg-[#F8F8F8] p-10 rounded-md 
+        grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="text-center col-span-full py-10 space-y-6 placeholder">
+        <p class="hind-siliguri-regular text-[16px]">
+            আপনি এখনো কোন Lesson Select করেন
+        </p>
+        <h2 class="hind-siliguri-regular text-[35px]">
+            একটি Lesson Select করুন।
+        </h2>
+    </div>
+</section>
+
 
     <!-- FAQ Section -->
 
-    <section class="max-w-[1800px] mx-auto px-4 text-center pt-[160px]">
+    <section id="faq" class="max-w-[1800px] mx-auto px-4 text-center pt-[160px]">
         <h1 class="font-bold text-[36px]">
             <span class="text-[#00BCFF]">Frequently</span> Asked Questions
         </h1>
@@ -194,8 +196,8 @@
     </section>
 
     <!-- Footer Section -->
-    <footer class="bg-[#edf6ff]">
-        <div class="max-w-[1800px] mx-auto px-4 text-center py-[100px] flex justify-between">
+    <footer class="bg-[#edf6ff] py-[100px]">
+        <div class="max-w-[1800px] mx-auto flex flex-col-reverse md:flex-row gap-10 justify-between items-start py-5 w-11/12">
             <div class="text-left">
                 <div class="flex items-center mb-[21px]">
                     <h1 class="text-[20px] font-semibold">English</h1>
