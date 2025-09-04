@@ -75,20 +75,17 @@ const createElements = (value) => {
     .join("");
 };
 
-// Nav button Function 
-
+// Nav button Function
 
 document.querySelector("#faq-btn").addEventListener("click", (e) => {
   e.preventDefault();
   document.querySelector("#faq").scrollIntoView({ behavior: "smooth" });
 });
 
-
 document.querySelector("#learn-btn").addEventListener("click", (e) => {
   e.preventDefault();
   document.querySelector("#learn").scrollIntoView({ behavior: "smooth" });
 });
-
 
 const displayWordDetails = (word) => {
   console.log(word);
@@ -145,7 +142,8 @@ const displayLevelWord = (words) => {
   }
 
   // প্রথমে container কে flex + wrap দিতে হবে
-  wordContainer.className = "flex flex-wrap mx-5 sm:mx-20 lg:mx-14 bg-[#F8F8F8] p-2 lg:p-4 rounded-[10px]"; // negative margin for spacing
+  wordContainer.className =
+    "flex flex-wrap mx-5 sm:mx-20 lg:mx-14 bg-[#F8F8F8] p-2 lg:p-4 rounded-[10px]"; // negative margin for spacing
 
   words.forEach((word) => {
     const card = document.createElement("div");
