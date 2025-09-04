@@ -55,11 +55,10 @@ const loadWordDetail = async (id) => {
   }
 };
 
-/* 🔧 NEW: synonyms render helper */
+
 const createElements = (value) => {
   if (!value) return "কোনো synonym পাওয়া যায়নি";
 
-  // যদি array না হয়ে single string/comma-separated string আসে, handle করি
   const list = Array.isArray(value)
     ? value
     : String(value)
@@ -132,32 +131,45 @@ const displayLevelWord = (words) => {
   }
 
   words.forEach((word) => {
-    const card = document.createElement("div");
-    card.innerHTML = `
-      <div class="bg-white rounded-xl text-center shadow-sm py-5 px-5 space-y-4">
-        <h2 class="text-[32px] font-bold">${
-          word.word ? word.word : "শব্দ পাওয়া যায়নি"
-        }</h2>
-        <p class="text-[20px]">Meaning / Pronunciation</p>
-        <div class="hind-siliguri-regular text-[#18181B] text-[32px] font-semibold"> 
-          "${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${
-      word.pronunciation ? word.pronunciation : "Pronunciation পাওয়া যায়নি"
-    }"
-        </div>
-        <div class="flex justify-between items-center">
-          <button onclick="loadWordDetail(${
-            word.id
-          })" class="bg-[#1a91ff1a] px-5 py-4 rounded-lg">
-            <i class="fa-solid fa-circle-info"></i>
-          </button>
-          <button class="bg-[#1a91ff1a] px-5 py-4 rounded-lg">
-            <i class="fa-solid fa-volume-high"></i>
-          </button>
-        </div>
-      </div>`;
-    wordContainer.append(card);
-  });
+  const card = document.createElement("div");
+  card.innerHTML = `
+    <div class="bg-white rounded-xl text-center shadow-sm py-5 px-5 space-y-4">
+      <h2 class="text-[32px] font-bold">${
+        word.word ? word.word : "শব্দ পাওয়া যায়নি"
+      }</h2>
+      <p class="text-[20px]">Meaning / Pronunciation</p>
+      <div class="hind-siliguri-regular text-[#18181B] text-[32px] font-semibold"> 
+        "${word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"} / ${
+    word.pronunciation ? word.pronunciation : "Pronunciation পাওয়া যায়নি"
+  }"
+      </div>
+      <div class="flex justify-between items-center">
+        <button onclick="loadWordDetail(${
+          word.id
+        })" class="bg-[#1a91ff1a] px-5 py-4 rounded-lg">
+          <i class="fa-solid fa-circle-info"></i>
+        </button>
+        <button onclick="speakWord('${
+          word.word
+        }')" class="bg-[#1a91ff1a] px-5 py-4 rounded-lg">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+      </div>
+    </div>`;
+  wordContainer.append(card);
+});
 };
+
+// Specking Function
+function speakWord(text) {
+  if (!text) {
+    console.error("কোনো শব্দ পাওয়া যায়নি");
+    return;
+  }
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-US"; 
+  speechSynthesis.speak(utterance);
+}
 
 const displayLesson = (lessons) => {
   const levelContainer = document.getElementById("level-container");
